@@ -10,21 +10,15 @@ M.general = {
 M.dap = {
   plugin = true,
   n = {
-    ["<leader>db"] = {
+    ["<leader>dbb"] = {
       "<cmd> DapToggleBreakpoint <CR>",
-      "Add breakpoint at line",
+      "Toggle breakpoint at line",
     },
-    ["<leader>dus"] = {
+    ["<leader>dbc"] = {
       function()
-        local widgets = require "dap.ui.widgets"
-        local sidebar = widgets.sidebar(widgets.scopes)
-        sidebar.open()
+        require("dap").set_breakpoint(vim.fn.input "Condition: ", nil, nil)
       end,
-      "Open debugging sidebar",
-    },
-    ["<leader>dur"] = {
-      "<cmd> DapToggleRepl <CR>",
-      "Open debugging sidebar",
+      "Add conditional breakpoint at line",
     },
     ["<leader>dl"] = {
       "<cmd> DapStepOver <CR>",
